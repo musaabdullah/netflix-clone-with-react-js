@@ -1,8 +1,12 @@
- 
+ import Row from './Row';
+ import request from './request';
 export default function App() {
+ 
   return (
-      <h1>HELLO WORLD</h1>
+   <div className="App">
+         <Row title="NETFLIX ORIGINALS"  fetchUrl={request.fetchNetflixOriginals} />
+         <Row title="Trending Now" fetchUrl={request.fetchTrending} />
+    </div> 
     );
 }
 
- 
