@@ -33,12 +33,11 @@ function Banner() {
                       ${baseUrl}${movie?.backdrop_path}
                   )`,
                   backgroundPosition: "center center",
+                  objectFit: "cover"
               }}>
                {/* <img src={`${baseUrl}${movie.backdrop_path}`}/> */}
                 <div className="banner__contents">
 
-                {/* Background image */}
-                {/* title */}
                 <h1 className="banner__title">
                     {movie?.name || movie?.title || movie?.original_name}
                 </h1>
