@@ -3,7 +3,10 @@
     top: 0;
     width: 100%;
     display: flex;
-    /* background-color: black; */
+    background-color: black;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition: all 0.11;
 }
 
 .nav__logo{
@@ -12,4 +15,8 @@
     object-fit: contain;
     position: fixed;
     left: 0;
+}
+
+.nav__black {
+    background-color: #111;
 }
