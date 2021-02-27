@@ -2,16 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import './style.css'
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState("");
 
   const baseUrl = "https://image.tmdb.org/t/p/original/";
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(fetchUrl);
-      console.log(request.data.results);
-      setMovies(request.data.results);
+      try{
+        const request = await axios.get(fetchUrl);
+        
+        if(request.status !== 200){
+          throw Error 
+        }
+        console.log(request.data.results);
+        setMovies(request.data.results);
+      } catch (error) {
+     
+        setError(error.message);
+      }
     }
 
     fetchData();
@@ -23,16 +33,17 @@ function Row({ title, fetchUrl }) {
       <h2>{title}</h2>
 
       {/* container -> posters  */}
-      <div className="row__posters">
+      {error && <div className="">Error: You can't get data check your internet connection.</div>}
+      {movies && <div className="row__posters">
         {movies.map((movie) => (
           <img
             key={movie.id}
-            className="row__poster"
-            src={`${baseUrl}${movie.poster_path}`} 
+            className={`row__poster ${isLargeRow ? "row_posterLarge": ""}`}
+            src={`${baseUrl}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} 
             alt={movie.name}
           />
         ))}
-      </div>
+      </div>}
     </div>
   );
 }

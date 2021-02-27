@@ -1,10 +1,21 @@
  import Row from './Row';
  import request from './request';
+ import './app.css'
+ import Banner from './Banner';
 export default function App() {
+   
+  const isLargeRow = true;
  
   return (
-   <div className="bg-dark text-white">
-         <Row title="NETFLIX ORIGINALS"  fetchUrl={request.fetchNetflixOriginals} />
+   <div className=" text-white app">
+     {/* Navbar */}
+       
+     {/* banner */}
+       <Banner />
+       
+         <Row title="NETFLIX ORIGINALS" 
+          fetchUrl={request.fetchNetflixOriginals}
+          isLargeRow  />
          <Row title="Trending Now" fetchUrl={request.fetchTrending} />
          <Row title="Top Rated" fetchUrl={request.fetchTopRated} />
          <Row title="Action Movies" fetchUrl={request.fetchActionMovies} />
