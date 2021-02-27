@@ -25,8 +25,8 @@ function Banner() {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
     return (
-        <div>
-           {movie && <header className="banner"
+     
+             <header className="banner"
               style={{
                   backgroundSize: "cover",
                   backgroundImage: `url(
@@ -51,10 +51,10 @@ function Banner() {
                 <h1 className="banner__description">
                  {truncate(movie?.overview, 150)}
                 </h1>
+                <div className="banner--fadeBottom" />
                 </div>
-
-            </header>}
-        </div>
+            </header> 
+     
     )
 }
 
